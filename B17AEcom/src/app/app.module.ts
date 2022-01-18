@@ -1,7 +1,6 @@
 import { NgModule, ɵnoSideEffects } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -28,7 +27,6 @@ import { MatCardModule } from '@angular/material/card';
     WishlistComponent,
     NavComponent,
     ProductsComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -37,17 +35,16 @@ import { MatCardModule } from '@angular/material/card';
     MatSnackBarModule,
     BrowserAnimationsModule,
     MatBadgeModule,
-    MatCardModule, 
+    MatCardModule,
     MatButtonModule
-   
   ],
   providers: [DataService,
-    SnackBarService, 
+    SnackBarService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,
       multi: true
-  }],
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

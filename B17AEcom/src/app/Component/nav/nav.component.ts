@@ -8,18 +8,9 @@ import { DataService } from 'src/app/Services/data.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private data:DataService) {
-   }
-  //  public booklist:any=[]
-   
-  //  public getBooks() {
-  //    this.data.getBooks().subscribe((Response:any=[])=> {
-  //     this.booklist = Response;
-  //     // .slice(0,4);
-  //    });
-  //  }
-    ngOnInit(): void {
-
-      // this.getBooks();
-      }
+  constructor(private data: DataService) {
+  }
+  
+  ngOnInit(): void {
+  }
 }
