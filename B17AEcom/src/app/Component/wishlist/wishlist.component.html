@@ -1,0 +1,55 @@
+<div class="mat-elevation-z2">
+    <div class="container">
+        <div class="navbar navbar-dark bg-default shadow-sm">
+            <div class="navbar-brand align-item-start d-flex">
+                <span style="padding:10px;"> My WishList </span>
+                <div>
+                    <button class="mat-elevation-z4" mat-raised-button (click)="clearWishList()">Clear Wishlist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-container>
+        <mat-card *ngIf="wishListItem.length !=0">
+            <mat-card-content>
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th style="padding-left: 25px">Book</th>
+                            <th style="padding-left: 15px">Title</th>
+                            <th style="padding-left: 20px">MRP</th>
+                            <th style="padding-left: 10px">Add to cart</th>
+                            <th style="padding-left: 35px">Delete</th>
+                        </tr>
+                    </thead>
+                </table>
+            </mat-card-content>
+            <mat-card-content>
+                <table>
+                    <tbody>
+                        <tr *ngFor="let item of wishListItem" class="mat-elevation-z4">
+                            <td><img style="width: 120px; margin: 20px;"
+                                    src="https://bookcart.azurewebsites.net/Upload/{{item.coverFileName}}" alt="">
+                            </td>
+                            <td style="padding: 10px 80px;"><a [routerLinkActive]='["link-active"]'
+                                    [routerLink]='["/nav"]'>
+                                    {{item.title }}</a><br>
+                            </td>
+                            <td style="padding: 10px 90px;">{{item.price | currency: 'INR' }}</td>
+                            <td style="padding: 10px 30px;"> <button class="btn btn-primary"><i
+                                        class="fas fa-cart-plus"></i> Add to Cart</button> </td>
+                            <td style="padding: 10px 100px;"> <button class="btn btn-default"
+                                    (click)="removeFromWishlist(item)">Remove from Wishlist</button> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+    <div class="container" *ngIf="wishListItem.length ==0">
+        <span style="padding:20px; font-size: xx-large;">Your Wishlist is empty </span>
+        <br>
+        <button routerLink="/products" class="btn btn-primary">Continue Shopping</button>
+    </div>
+
+</div>

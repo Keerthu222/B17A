@@ -1,18 +1,53 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ɵnoSideEffects } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './component/header/header.component';
+import { WishlistComponent } from './component/wishlist/wishlist.component';
+import { NavComponent } from './component/nav/nav.component';
+import { ProductsComponent } from './component/products/products.component';
+
+import { DataService } from './Services/data.service';
+import { AppHttpInterceptor } from './Services/httpInterceptor';
+import { SnackBarService } from './Services/snack-bar.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    WishlistComponent,
+    NavComponent,
+    ProductsComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
+    MatBadgeModule,
+    MatCardModule, 
+    MatButtonModule
+   
   ],
-  providers: [],
+  providers: [DataService,
+    SnackBarService, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppHttpInterceptor,
+      multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

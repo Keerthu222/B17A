@@ -1,0 +1,29 @@
+<div ng-app="App">
+    <div ng-controller="Ctrl">
+        <div class="grid">
+            <ng-container class="grid-item" *ngFor="let item of booklist">
+                <div style="position:relative">
+                    <span class="dot" (click)="onWishlistClicked(item)"
+                        [ngStyle]="{'background-color': (isWishedBook(item) == true) ? 'red' : 'white'}">
+                        <i class="fas fa-heart" aria-hidden="false"></i>
+                    </span>
+                    <img src='{{ "https://bookcart.azurewebsites.net/Upload/" + item.coverFileName }}'>
+                    <div>
+                        <a [routerLinkActive]='["link-active"]' [routerLink]='["/nav"]'> {{item.title }}</a>
+                    </div>
+                    <br>
+                    <div>{{item.price | currency: 'INR'}}</div>
+                    <div class="card-body">
+                        <p class="card-text"></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-m btn-primary"><i class="fas fa-cart-plus"></i> Add
+                                    Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
