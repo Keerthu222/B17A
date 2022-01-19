@@ -36,7 +36,7 @@ export class WishlistComponent implements OnInit {
   }
 
   removeFromWishlist(book: Book) {
-    this.wishlistService.removeWishlist(15, book.bookId).subscribe(() => {
+    this.wishlistService.addOrRemoveWishlist(15, book.bookId).subscribe(() => {
       this.snackBar.openSnackBar('Item removed from your Wishlist', 'close');
       this.getWishlist();
     }, error => {

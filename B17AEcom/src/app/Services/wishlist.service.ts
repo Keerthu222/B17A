@@ -26,7 +26,7 @@ export class WishlistService {
       }));
   }
 
-  removeWishlist(userId: any, bookId: any) {
+  addOrRemoveWishlist(userId: any, bookId: any) {
     return this.http.post<Book>(this.baseURL + `/api/Wishlist/ToggleWishlist/${userId}/${bookId}`, {})
       .pipe(map((response: Book) => {
         return response;

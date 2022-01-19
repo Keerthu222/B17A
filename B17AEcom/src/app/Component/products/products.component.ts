@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit {
   public getBooks() {
     this.dataService.fetchBooks().subscribe((bookList: Book[]) => {
       this.booklist = [];
-      this.booklist = bookList.slice(0, 10);
+      this.booklist = bookList.slice(0, 20);
     });
   }
 
