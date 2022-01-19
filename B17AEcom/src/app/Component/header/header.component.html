@@ -1,16 +1,7 @@
 <nav class="row bg-primary">
   <span class="col-1" class="fs-4" class="text-white" [routerLinkActive]='["link-active"]'
     [routerLink]='["/products"]'>BookCart </span>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
   <span class="col-1" matBadge={{getWishlistCount()}} matBadgeOverlap="false" matBadgeColor="warn" class="fas fa-heart"
     [routerLinkActive]='["link-active"]' [routerLink]='["./wishlist"]'> </span>
-  <div class="col-1"></div>
 </nav>
 <router-outlet></router-outlet>
