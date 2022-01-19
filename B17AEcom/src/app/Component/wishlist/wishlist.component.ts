@@ -13,21 +13,20 @@ export class WishlistComponent implements OnInit {
 
   public wishListItem: Book[] = [];
 
-  constructor(private wishlistService: WishlistService, private snackBar: SnackBarService, private data: DataService) { }
+  constructor(private wishlistService: WishlistService, private snackBar: SnackBarService) { }
 
   ngOnInit(): void {
     this.getWishlist();
   }
 
   public getWishlist() {
-    this.wishlistService.getWishlist(15).subscribe((Response: Book[]) => {
-      this.wishListItem = [];
-      this.wishListItem = Response;
+    this.wishlistService.getWishlist(15).subscribe((response: Book[]) => {
+      this.wishListItem = response;
     });
   }
 
   clearWishList() {
-    this.wishlistService.clearAllwishlist(15).subscribe((Response: any) => {
+    this.wishlistService.clearAllwishlist(15).subscribe(() => {
       this.snackBar.openSnackBar('Wishlist Cleared', 'close');
       this.getWishlist();
     }, error => {
@@ -42,6 +41,5 @@ export class WishlistComponent implements OnInit {
     }, error => {
       console.log('Error ocurred while removing from wishlist : ', error);
     });
-
   }
 }

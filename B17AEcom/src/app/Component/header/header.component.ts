@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/Models/Book';
 import { DataService } from 'src/app/Services/data.service';
+import { WishlistService } from 'src/app/Services/wishlist.service';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +10,10 @@ import { DataService } from 'src/app/Services/data.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private wishListService: WishlistService) {}
 
   ngOnInit(): void {
-    this.fetchWishlistCount();
-    
+    this.fetchWishlistCount();  
   }
 
   public wishlistCount: number = 0;
@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
   }
 
   public fetchWishlistCount() {
-    this.dataService.getWishlist(15).subscribe((Response: Book[]) => {
-      this.wishlistCount = Response.length;
+    this.wishListService.getWishlist(15).subscribe((response: Book[]) => {
+      this.wishlistCount = response.length;
     });
   }
 

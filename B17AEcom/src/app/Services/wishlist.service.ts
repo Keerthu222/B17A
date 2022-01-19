@@ -12,25 +12,24 @@ export class WishlistService {
 
   constructor(private http: HttpClient) { }
 
-  public getWishlist(userId: any) {
-    return this.http.get<Book[]>(this.baseURL + `/api/Wishlist/${userId}`, {})
+  public getWishlist(userId: number) {
+    return this.http.get<Book[]>(this.baseURL + `/api/Wishlist/${userId}`)
       .pipe(map((response: Book[]) => {
         return response;
       }));
   }
 
-  public clearAllwishlist(userId: any) {
-    return this.http.delete<any>(this.baseURL + `/api/Wishlist/${userId}`, {})
-      .pipe(map((response: any) => {
+  public clearAllwishlist(userId: number) {
+    return this.http.delete<number>(this.baseURL + `/api/Wishlist/${userId}`)
+      .pipe(map((response: number) => {
         return response;
       }));
   }
 
-  addOrRemoveWishlist(userId: any, bookId: any) {
-    return this.http.post<Book>(this.baseURL + `/api/Wishlist/ToggleWishlist/${userId}/${bookId}`, {})
-      .pipe(map((response: Book) => {
+  addOrRemoveWishlist(userId: number, bookId: number) {
+    return this.http.post<Book[]>(this.baseURL + `/api/Wishlist/ToggleWishlist/${userId}/${bookId}`, null)
+      .pipe(map((response: Book[]) => {
         return response;
       }));
   }
-
 }
