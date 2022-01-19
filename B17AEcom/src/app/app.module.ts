@@ -10,7 +10,6 @@ import { WishlistComponent } from './component/wishlist/wishlist.component';
 import { NavComponent } from './component/nav/nav.component';
 import { ProductsComponent } from './component/products/products.component';
 
-import { DataService } from './Services/data.service';
 import { AppHttpInterceptor } from './Services/httpInterceptor';
 import { SnackBarService } from './Services/snack-bar.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -18,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { BookService } from './Services/book.service';
 
 
 @NgModule({
@@ -38,7 +38,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
     MatButtonModule
   ],
-  providers: [DataService,
+  providers: [BookService,
     SnackBarService,
     {
       provide: HTTP_INTERCEPTORS,

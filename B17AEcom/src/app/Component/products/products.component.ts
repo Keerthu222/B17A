@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/Models/Book';
-import { DataService } from 'src/app/Services/data.service';
+import { BookService } from 'src/app/Services/book.service';
 import { SnackBarService } from 'src/app/Services/snack-bar.service';
 import { WishlistService } from 'src/app/Services/wishlist.service';
 
@@ -17,14 +17,14 @@ export class ProductsComponent implements OnInit {
     this.getBooks();
   }
 
-  constructor(private dataService: DataService, private snackBar: SnackBarService, private wishListService: WishlistService) {
+  constructor(private bookService: BookService, private snackBar: SnackBarService, private wishListService: WishlistService) {
   }
 
   public booklist: Book[] = [];
   public wishlist: Book[] = [];
 
   public getBooks() {
-    this.dataService.getBooks().subscribe((bookList: Book[]) => {
+    this.bookService.getBooks().subscribe((bookList: Book[]) => {
       this.booklist = bookList.slice(0, 20);
     });
   }

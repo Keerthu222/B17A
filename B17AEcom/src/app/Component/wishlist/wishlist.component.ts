@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/Models/Book';
-import { DataService } from 'src/app/Services/data.service';
 import { SnackBarService } from 'src/app/Services/snack-bar.service';
 import { WishlistService } from 'src/app/Services/wishlist.service';
 
